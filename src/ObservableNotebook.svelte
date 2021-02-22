@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte'
+	import { onMount, createEventDispatcher } from 'svelte'
 
 	import {Runtime, Inspector} from "@observablehq/runtime"
 	
@@ -8,15 +8,20 @@
 	
 	let root_group
 	
-	// const dispatch = createEventDispatcher()
+	const dispatch = createEventDispatcher()
+	
 	onMount(async function() {
-		new Runtime().module(notebook, (name) => {
+		let inspector
+		const module = new Runtime().module(notebook, (name) => {
 			if (name == variable_name) {
-				let inspector = new Inspector(root_group)
-				//dispatch('ready', { inspector })
+				inspector = new Inspector(root_group)
 				return inspector
 			}
 		})
+
+		// wait for the cell to be fulfilled
+		await module.value(variable_name)
+		dispatch('ready', { inspector, node: root_group })
 	})
 </script>
 
