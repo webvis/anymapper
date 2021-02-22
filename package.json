@@ -31,11 +31,11 @@
     "rollup-plugin-svelte": "^5.0.3",
     "sass": "^1.26.12",
     "svelte": "^3.0.0",
-    "svelte-material-ui": "^1.0.0",
-    "@observablehq/runtime": "^4.8.2"
+    "svelte-material-ui": "^1.0.0"
   },
   "dependencies": {
     "d3": "^5.16.0",
-    "d3-array": "^2.4.0"
+    "d3-array": "^2.4.0",
+    "@observablehq/runtime": "^4.8.2"
   }
 }
