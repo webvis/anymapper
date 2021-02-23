@@ -5,7 +5,7 @@
     import IconButton from '@smui/icon-button'
 
     export let title = 'Title'
-    export let subtitle = 'Subtitle'
+    export let subtitle = ''
 </script>
 
 <style>
