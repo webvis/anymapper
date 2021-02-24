@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte'
 
 	import Placemark from './Placemark.svelte'
+import { missing_component } from 'svelte/internal'
 
 	export let viewBox
 	export let placemark_icon // FIXME expose Placemark component
@@ -146,7 +147,7 @@
 	<g transform={$current_transform}>
 		<slot></slot>
 		{#if $selection && $selection.position}
-			<Placemark icon={placemark_icon}/> <!-- the Placemark needs to be rescaled when placed -->
+			<Placemark scale={ Math.min(svg.viewBox.baseVal.width, svg.viewBox.baseVal.height)/4000 } icon={placemark_icon}/> <!-- the Placemark needs to be rescaled when placed -->
 		{/if}
 	</g>
 </svg>
