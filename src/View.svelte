@@ -7,7 +7,6 @@
 	import Placemark from './Placemark.svelte'
 
 	export let viewBox
-	export let placemark_icon // FIXME expose Placemark component
 	
 	let svg
 	let zoom_behavior
@@ -148,8 +147,5 @@
 <svg class="view" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp}>
 	<g transform={$current_transform}>
 		<slot></slot>
-		{#if $selection && $selection.position}
-			<Placemark icon={placemark_icon}/> <!-- the Placemark needs to be rescaled when placed -->
-		{/if}
 	</g>
 </svg>
