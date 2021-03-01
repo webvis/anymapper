@@ -147,7 +147,7 @@ import { missing_component } from 'svelte/internal'
 	<g transform={$current_transform}>
 		<slot></slot>
 		{#if $selection && $selection.position}
-			<Placemark scale={ Math.min(svg.viewBox.baseVal.width, svg.viewBox.baseVal.height)/4000 } icon={placemark_icon}/> <!-- the Placemark needs to be rescaled when placed -->
+			<Placemark scale={ Math.min(svg.viewBox.baseVal.width, svg.viewBox.baseVal.height)/4500 } icon={placemark_icon}/> <!-- the Placemark needs to be rescaled when placed -->
 		{/if}
 	</g>
 </svg>
