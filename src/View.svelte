@@ -67,9 +67,9 @@
 
 		// update LOD-sensitive elements that are defined inside the SVG
 		function updateLODElementsInSVG() {
-			svg.querySelectorAll('[data-scaleExtent]').forEach(elem => {
-				let scale_extent = JSON.parse(elem.getAttribute('data-scaleExtent')).map(d => d == 'Infinity' ? Infinity : d)
-				let lod_visible = $current_transform.k >= scale_extent[0] && $current_transform.k <= scale_extent[1]
+			svg.querySelectorAll('[data-lodrange]').forEach(elem => {
+				let lod_range = JSON.parse(elem.getAttribute('data-lodrange')).map(d => d == 'Infinity' ? Infinity : d)
+				let lod_visible = $current_transform.k >= lod_range[0] && $current_transform.k <= lod_range[1]
 				elem.setAttribute('visibility', lod_visible ? 'visible' : 'hidden')
 			})
 		}

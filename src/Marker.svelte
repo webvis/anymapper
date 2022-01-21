@@ -3,8 +3,8 @@
 
     export let position
 
-    $: scale_extent = 'scaleExtent' in position ? position.scaleExtent.map(d => d == 'Infinity' ? Infinity : d) : [0, Infinity]
-    $: lod_visible = $current_transform.k >= scale_extent[0] && $current_transform.k <= scale_extent[1]
+    $: lod_range = 'lodrange' in position ? position.lodrange.map(d => d == 'Infinity' ? Infinity : d) : [0, Infinity]
+    $: lod_visible = $current_transform.k >= lod_range[0] && $current_transform.k <= lod_range[1]
 </script>
 
 <style>
