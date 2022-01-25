@@ -84,8 +84,8 @@
 	})
 
 	function updateViewport() {
-		bcrect = svg.getBoundingClientRect()
-		ctm = svg.getCTM()
+		let bcrect = svg.getBoundingClientRect()
+		let ctm = svg.getCTM()
 
 		$viewport = new DOMRect(
 			(-ctm.e/ctm.a-$current_transform.x)/$current_transform.k,
