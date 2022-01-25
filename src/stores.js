@@ -8,6 +8,7 @@ export const selection = writable(null)
 export const results = writable([])
 export const current_transform = writable(d3.zoomIdentity)
 export const viewBoxRect = writable({width: 1000, height: 1000, x: 0, y: 0})
+export const viewport = writable(new DOMRect(0,0,0,0))
 
 export const semantic_zoom = derived(
     [current_transform, viewBoxRect],

@@ -1,7 +1,7 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { current_transform, viewBoxRect, layers, current_layer, selection } from './stores.js'
+	import { current_transform, viewBoxRect, viewport, layers, current_layer, selection } from './stores.js'
 	import { onMount } from 'svelte'
 
 	import Placemark from './Placemark.svelte'
@@ -59,6 +59,7 @@
 
 		function handleZoom() {
 			$current_transform = d3.event.transform
+			updateViewport()
 			updateLODElementsInSVG()
 		}
 
@@ -74,8 +75,25 @@
 			})
 		}
 
+		updateViewport()
 		updateLODElementsInSVG()
+
+		window.addEventListener('resize', function(event) {
+			updateViewport()
+		}, true)
 	})
+
+	function updateViewport() {
+		bcrect = svg.getBoundingClientRect()
+		ctm = svg.getCTM()
+
+		$viewport = new DOMRect(
+			(-ctm.e/ctm.a-$current_transform.x)/$current_transform.k,
+			(-ctm.f/ctm.d-$current_transform.y)/$current_transform.k,
+			bcrect.width/ctm.a/$current_transform.k,
+			bcrect.height/ctm.d/$current_transform.k
+		)
+	}
 
 	function scaleBy(k, duration) {
 		duration = duration === undefined ? 300 : duration
