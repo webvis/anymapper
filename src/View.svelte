@@ -7,7 +7,7 @@
 	import Placemark from './Placemark.svelte'
 
 	export let viewBox
-	export let interpolateZoom = d3.interpolateZoom().rho(0)
+	export let interpolateZoom = d3.interpolateZoom.rho(0)
 	
 	let svg
 	let zoom_behavior
