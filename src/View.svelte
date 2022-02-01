@@ -7,6 +7,7 @@
 	import Placemark from './Placemark.svelte'
 
 	export let viewBox
+	export let interpolateZoom = d3.interpolateZoom().rho(0)
 	
 	let svg
 	let zoom_behavior
@@ -53,6 +54,7 @@
 		// enable d3 zoom
 		zoom_behavior = d3.zoom()
 			.scaleExtent([0, Infinity])
+			.interpolate(interpolateZoom)
 			.on('zoom', handleZoom)
 
 		d3.select(svg).call(zoom_behavior)
