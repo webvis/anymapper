@@ -18,7 +18,7 @@
     fill: var(--primary-fg-color);
 }
 .arrow, .circle, text {
-    transform: scale(0.75);
+    transform: scale(0.15);
 }
 text {
     font-size: 160px;
@@ -27,7 +27,7 @@ text {
 
 @media only screen and (max-width: 600px) {
     .arrow, .circle, text {
-        transform: scale(1.5);
+        transform: scale(0.3);
     }
 }
 </style>
