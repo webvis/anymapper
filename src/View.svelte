@@ -1,10 +1,8 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { current_transform, viewBoxRect, viewport, layers, current_layer, selection } from './stores.js'
+	import { current_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, layers, current_layer, selection } from './stores.js'
 	import { onMount } from 'svelte'
-
-	import Placemark from './Placemark.svelte'
 
 	export let viewBox
 	export let interpolateZoom = d3.interpolate
@@ -61,7 +59,7 @@
 
 		function handleZoom() {
 			$current_transform = d3.event.transform
-			updateViewport()
+			updateGlobals()
 			updateLODElementsInSVG()
 		}
 
@@ -77,24 +75,27 @@
 			})
 		}
 
-		updateViewport()
+		updateGlobals()
 		updateLODElementsInSVG()
 
 		window.addEventListener('resize', function(event) {
-			updateViewport()
+			updateGlobals()
 		}, true)
 	})
 
-	function updateViewport() {
-		let bcrect = svg.getBoundingClientRect()
+	function updateGlobals() {
+		$screen_size = svg.getBoundingClientRect()
 		let ctm = svg.getCTM()
+		$screen_transform = new d3.ZoomTransform(ctm.a, ctm.e, ctm.f)
 
 		$viewport = new DOMRect(
-			(-ctm.e/ctm.a-$current_transform.x)/$current_transform.k,
-			(-ctm.f/ctm.d-$current_transform.y)/$current_transform.k,
-			bcrect.width/ctm.a/$current_transform.k,
-			bcrect.height/ctm.d/$current_transform.k
+			(-$screen_transform.x/$screen_transform.k-$current_transform.x)/$current_transform.k,
+			(-$screen_transform.y/$screen_transform.k-$current_transform.y)/$current_transform.k,
+			$screen_size.width/$screen_transform.k/$current_transform.k,
+			$screen_size.height/$screen_transform.k/$current_transform.k
 		)
+
+		$zoom = $screen_transform.k * $current_transform.k
 	}
 
 	function scaleBy(k, duration) {
