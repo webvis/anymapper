@@ -7,19 +7,16 @@ export const current_layer = writable(null)
 export const selection = writable(null)
 export const results = writable([])
 
-export const user_transform = writable(d3.zoomIdentity)
 export const viewBoxRect = writable({width: 1000, height: 1000, x: 0, y: 0})
 
 export const screen_size = writable(new DOMRect(0, 0, 0, 0))
 export const screen_transform = writable(d3.zoomIdentity)
 
+export const user_transform = writable(d3.zoomIdentity)
+
 export const zoom = writable(1.0)
 export const viewport = writable(new DOMRect(0, 0, 0, 0))
 
-export const semantic_zoom = derived(
-    [user_transform, viewBoxRect],
-    ([tr, rect]) => Math.min(rect.width, rect.height)/4500 * 1/tr.k
-)
 
 const get_id_from_hash = () => window.location.hash.slice(1)
 
