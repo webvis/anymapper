@@ -8,13 +8,6 @@
 </script>
 
 <style>
-
-
-@media only screen and (max-width: 600px) {
-    .marker_content {
-        transform: scale(2);
-    }
-}
 </style>
 
 {#if position.layers.has($current_layer.name) && lod_visible}

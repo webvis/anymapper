@@ -24,12 +24,6 @@ text {
     font-size: 160px;
     text-anchor: middle;
 }
-
-@media only screen and (max-width: 600px) {
-    .arrow, .circle, text {
-        transform: scale(0.3);
-    }
-}
 </style>
 
 {#if $selection && $selection.position}
