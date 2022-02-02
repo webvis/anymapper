@@ -128,7 +128,7 @@
 	}
 
 	function handleKeyUp(e) {
-		const delta = 350 / $current_transform.k
+		const delta = 100 / $zoom
 
 		// pan and zoom keyboard control
 		switch(e.key) {
