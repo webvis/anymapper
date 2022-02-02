@@ -1,15 +1,15 @@
 <script>
-    import { semantic_zoom } from './stores.js'
+    import { viewport } from './stores.js'
 </script>
 
 <style>
 </style>
 
-<rect transform="scale({$semantic_zoom})"
+<rect
     fill="white"
     fill-opacity="0.7"
-    x="-50000"
-    y="-50000"
-    width="100000"
-    height="100000"
+    x={ $viewport.x }
+    y={ $viewport.y }
+    width={ $viewport.width }
+    height={ $viewport.height }
 />
