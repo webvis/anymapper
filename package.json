@@ -1,6 +1,6 @@
 {
   "name": "anymapper",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Visualize your data as a zoomable map",
   "svelte": "index.js",
   "scripts": {
