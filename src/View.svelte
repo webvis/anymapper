@@ -86,7 +86,7 @@
 	function updateGlobals() {
 		$screen_size = svg.getBoundingClientRect()
 		let ctm = svg.getCTM()
-		$screen_transform = new d3.zoomIdentity().translate(ctm.e, ctm.f).scale(ctm.a)
+		$screen_transform = d3.zoomIdentity().translate(ctm.e, ctm.f).scale(ctm.a)
 
 		$viewport = new DOMRect(
 			(-$screen_transform.x/$screen_transform.k-$current_transform.x)/$current_transform.k,
