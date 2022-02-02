@@ -1,7 +1,7 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { current_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, layers, current_layer, selection } from './stores.js'
+	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, layers, current_layer, selection } from './stores.js'
 	import { onMount } from 'svelte'
 
 	export let viewBox
@@ -58,7 +58,7 @@
 		d3.select(svg).call(zoom_behavior)
 
 		function handleZoom() {
-			$current_transform = d3.event.transform
+			$user_transform = d3.event.transform
 			updateGlobals()
 			updateLODElementsInSVG()
 		}
@@ -70,7 +70,7 @@
 		function updateLODElementsInSVG() {
 			svg.querySelectorAll('[data-lodrange]').forEach(elem => {
 				let lod_range = JSON.parse(elem.getAttribute('data-lodrange')).map(d => d == 'Infinity' ? Infinity : d)
-				let lod_visible = $current_transform.k >= lod_range[0] && $current_transform.k <= lod_range[1]
+				let lod_visible = $user_transform.k >= lod_range[0] && $user_transform.k <= lod_range[1]
 				elem.setAttribute('visibility', lod_visible ? 'visible' : 'hidden')
 			})
 		}
@@ -89,13 +89,13 @@
 		$screen_transform = d3.zoomIdentity.translate(ctm.e, ctm.f).scale(ctm.a)
 
 		$viewport = new DOMRect(
-			(-$screen_transform.x/$screen_transform.k-$current_transform.x)/$current_transform.k,
-			(-$screen_transform.y/$screen_transform.k-$current_transform.y)/$current_transform.k,
-			$screen_size.width/$screen_transform.k/$current_transform.k,
-			$screen_size.height/$screen_transform.k/$current_transform.k
+			(-$screen_transform.x/$screen_transform.k-$user_transform.x)/$user_transform.k,
+			(-$screen_transform.y/$screen_transform.k-$user_transform.y)/$user_transform.k,
+			$screen_size.width/$screen_transform.k/$user_transform.k,
+			$screen_size.height/$screen_transform.k/$user_transform.k
 		)
 
-		$zoom = $screen_transform.k * $current_transform.k
+		$zoom = $screen_transform.k * $user_transform.k
 	}
 
 	function scaleBy(k, duration) {
@@ -166,7 +166,7 @@
 </style>
 
 <svg class="view" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp}>
-	<g transform={$current_transform}>
+	<g transform={$user_transform}>
 		<slot></slot>
 	</g>
 </svg>

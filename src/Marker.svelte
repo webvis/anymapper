@@ -1,10 +1,10 @@
 <script>
-    import { current_layer, current_transform, zoom } from './stores.js'
+    import { current_layer, user_transform, zoom } from './stores.js'
 
     export let position
 
     $: lod_range = 'lodrange' in position ? position.lodrange.map(d => d == 'Infinity' ? Infinity : d) : [0, Infinity]
-    $: lod_visible = $current_transform.k >= lod_range[0] && $current_transform.k <= lod_range[1]
+    $: lod_visible = $user_transform.k >= lod_range[0] && $user_transform.k <= lod_range[1]
 </script>
 
 <style>
