@@ -11,7 +11,7 @@
 	let zoom_behavior
 	let current = false
 
-	let settled = true
+	let debounce_timeout
 	
 	onMount(() => {
 		// store viewBox rect in a global store
@@ -101,18 +101,12 @@
 		)
 
 		
-		// throttled update of settled globals
-		if(!settled) {
-			return
-		}
+		// debounced update of settled globals
+		clearTimeout(debounce_timeout)
 
-		$settled_zoom = $zoom
-		$settled_viewport = $viewport
-
-		// ignore any future requests for the next 300 milliseconds
-		settled = false
-		setTimeout(function (event) {
-			settled = true
+		debounce_timeout = setTimeout(function (event) {
+			$settled_zoom = $zoom
+			$settled_viewport = $viewport
 		}, 300)
 	}
 
