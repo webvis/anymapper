@@ -1,6 +1,6 @@
 {
   "name": "anymapper",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Visualize your data as a zoomable map",
   "svelte": "index.js",
   "scripts": {
@@ -34,8 +34,8 @@
     "svelte-material-ui": "^1.0.0"
   },
   "dependencies": {
+    "@observablehq/runtime": "^4.8.2",
     "d3": "^5.16.0",
-    "d3-array": "^2.4.0",
-    "@observablehq/runtime": "^4.8.2"
+    "d3-array": "^2.4.0"
   }
 }

@@ -17,6 +17,9 @@ export const user_transform = writable(d3.zoomIdentity)
 export const zoom = writable(1.0)
 export const viewport = writable(new DOMRect(0, 0, 0, 0))
 
+export const settled_zoom = writable(1.0)
+export const settled_viewport = writable(new DOMRect(0, 0, 0, 0))
+
 
 const get_id_from_hash = () => window.location.hash.slice(1)
 

@@ -1,7 +1,7 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, layers, current_layer, selection } from './stores.js'
+	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, settled_zoom, settled_viewport, layers, current_layer, selection } from './stores.js'
 	import { onMount } from 'svelte'
 
 	export let viewBox
@@ -10,6 +10,8 @@
 	let svg
 	let zoom_behavior
 	let current = false
+
+	let settled = true
 	
 	onMount(() => {
 		// store viewBox rect in a global store
@@ -88,6 +90,9 @@
 		let ctm = svg.getCTM()
 		$screen_transform = d3.zoomIdentity.translate(ctm.e, ctm.f).scale(ctm.a)
 
+
+		$zoom = $screen_transform.k * $user_transform.k
+
 		$viewport = new DOMRect(
 			(-$screen_transform.x/$screen_transform.k-$user_transform.x)/$user_transform.k,
 			(-$screen_transform.y/$screen_transform.k-$user_transform.y)/$user_transform.k,
@@ -95,7 +100,20 @@
 			$screen_size.height/$screen_transform.k/$user_transform.k
 		)
 
-		$zoom = $screen_transform.k * $user_transform.k
+		
+		// throttled update of settled globals
+		if(!settled) {
+			return
+		}
+
+		$settled_zoom = $zoom
+		$settled_viewport = $viewport
+
+		// ignore any future requests for the next 300 milliseconds
+		settled = false
+		setTimeout(function (event) {
+			settled = true
+		}, 300)
 	}
 
 	function scaleBy(k, duration) {
