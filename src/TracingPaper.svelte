@@ -3,11 +3,14 @@
 </script>
 
 <style>
+    .tracing_paper {
+        fill: white;
+        fill-opacity: 0.75;
+    }
 </style>
 
 <rect
-    fill="white"
-    fill-opacity="0.7"
+    class="tracing_paper"
     x={ $viewport.x }
     y={ $viewport.y }
     width={ $viewport.width }
