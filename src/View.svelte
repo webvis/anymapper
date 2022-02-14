@@ -83,6 +83,9 @@
 		window.addEventListener('resize', function(event) {
 			updateGlobals()
 		}, true)
+
+		// listen to layer changes
+		current_layer.subscribe(handleNewLayer)
 	})
 
 	function updateGlobals() {
@@ -139,14 +142,14 @@
 		}
 	}
 
-	// listen to layer changes
-	current_layer.subscribe(handleNewLayer)
-
-	function handleNewLayer(d) {
+	async function handleNewLayer(new_layer) {
+		// wait for DOM to be synced
+		await (() => new Promise(requestAnimationFrame))()
+		
 		// hide or show layer-sensitive elements in SVG
 		svg.querySelectorAll('[data-inlayers]').forEach(elem => {
 			let in_layers = JSON.parse(elem.getAttribute('data-inlayers'))
-			let visible = current_layer in in_layers
+			let visible = in_layers.includes(new_layer.name)
 			elem.setAttribute('visibility', visible ? 'visible' : 'hidden')
 		})
 	}
