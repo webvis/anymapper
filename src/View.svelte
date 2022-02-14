@@ -75,6 +75,11 @@
 				let lod_visible = $user_transform.k >= lod_range[0] && $user_transform.k <= lod_range[1]
 				elem.setAttribute('visibility', lod_visible ? 'visible' : 'hidden')
 			})
+			svg.querySelectorAll('[data-inlayers]').forEach(elem => {
+				let in_layers = JSON.parse(elem.getAttribute('data-inlayers'))
+				let visible = current_layer in in_layers
+				elem.setAttribute('visibility', visible ? 'visible' : 'hidden')
+			})
 		}
 
 		updateGlobals()
