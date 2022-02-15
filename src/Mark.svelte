@@ -2,6 +2,7 @@
     export let fg = 'white'
     export let bg = '#7b5b5b'
     export let icon = null
+    export let icon_set = null
     export let text = null
     export let shape = 'circle'
 </script>
@@ -25,6 +26,6 @@
     {#if text}
         <text class="label" fill={fg} text-anchor="middle" dy=".35em">{text}</text>
     {:else if icon}
-        <text class="material-icons" fill={fg} transform="scale(0.8)" text-anchor="middle" dy=".5em">{icon}</text>
+        <text class="material-icons{icon_set ? '-'+icon_set : ''}" fill={fg} transform="scale(0.8)" text-anchor="middle" dy=".5em">{icon}</text>
     {/if}
 </g>

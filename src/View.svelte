@@ -1,7 +1,7 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, settled_zoom, settled_viewport, layers, current_layer, selection } from './stores.js'
+	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, settled_zoom, settled_viewport, layers, current_layer, selection, hovered_id } from './stores.js'
 	import { onMount } from 'svelte'
 
 	export let viewBox
@@ -140,6 +140,21 @@
 		if(d && d.position) {
 			translateTo(d.position)
 		}
+	}
+
+	// listen to hovered changes
+	hovered_id.subscribe(handleHover)
+
+	function handleHover(id) {
+		if(!svg) return
+		
+		svg.querySelectorAll('.selectable').forEach(elem => {
+			if(elem.getAttribute('id') == id) {
+				elem.classList.add('hovered')
+			} else {
+				elem.classList.remove('hovered')
+			}
+		})
 	}
 
 	async function handleNewLayer(new_layer) {

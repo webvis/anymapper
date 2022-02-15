@@ -11,7 +11,7 @@
 </style>
 
 {#if position.layers.has($current_layer.name) && lod_visible}
-<g class="selectable marker" transform="translate({position.x},{position.y}) scale({1/$zoom})" on:click>
+<g class="selectable marker" transform="translate({position.x},{position.y}) scale({1/$zoom})" on:click on:mouseenter on:mouseleave>
     <g class="marker_content">
         <slot></slot>
     </g>

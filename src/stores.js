@@ -26,6 +26,7 @@ const get_id_from_hash = () => window.location.hash.slice(1)
 export const selected_id = readable(get_id_from_hash(), function start(set) {
     window.addEventListener('hashchange', () => set(get_id_from_hash()), false)
 })
+export const hovered_id = writable(null)
 
 // null the selection whenever selected_id is invalidated
 selected_id.subscribe(id => {
@@ -57,6 +58,13 @@ export function clearSelection() {
 
 export function select(id) {
     window.location.hash = '#'+id
+}
+
+export function hover_enter(id) {
+    hovered_id.set(id)
+}
+export function hover_leave(id) {
+    hovered_id.set(null)
 }
 
 export function selectLayer(name) {
