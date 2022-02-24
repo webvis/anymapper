@@ -1,3 +1,5 @@
+![screenshot](https://user-images.githubusercontent.com/1604569/155539508-b8891591-e194-4b56-86e8-f517b3d84abb.png)
+
 # anymapper
 ### Visualize your data as a zoomable map
 
