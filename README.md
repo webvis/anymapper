@@ -1,9 +1,8 @@
-![screenshot](https://user-images.githubusercontent.com/1604569/155539508-b8891591-e194-4b56-86e8-f517b3d84abb.png)
-[IIT Map](https://github.com/webvis/iit-map), [Wordnet Atlas](https://github.com/webvis/wordnet-atlas)
-
-
 # anymapper
 ### Visualize your data as a zoomable map
+
+![screenshot](https://user-images.githubusercontent.com/1604569/155539508-b8891591-e194-4b56-86e8-f517b3d84abb.png)
+[IIT Map](https://github.com/webvis/iit-map), [Wordnet Atlas](https://github.com/webvis/wordnet-atlas)
 
 *anymapper* is a collection of [Svelte](https://svelte.dev/) UI components for building [Zoomable User Interfaces](https://en.wikipedia.org/wiki/Zooming_user_interface). You can use it to provide a familiar, Google Maps-like user interface for navigating [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) vector graphics, such as schematic diagrams, abstract visualizations, representations of gardens, shopping centers, multi-storey buildings, etc.
 
