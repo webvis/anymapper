@@ -90,3 +90,12 @@ export function selectLayer(name) {
     
     layers.set(get(layers)) // refresh layers after modification
 }
+
+export function is_position_in_layer(position, layer) {
+    return position.layers.has(layer.name)
+}
+
+export function is_position_in_lod(position, z) {
+    let lod_range = 'lodrange' in position ? position.lodrange.map(d => d == 'Infinity' ? Infinity : d) : [0, Infinity]
+    return z >= lod_range[0] && z <= lod_range[1]
+}
