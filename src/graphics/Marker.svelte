@@ -3,6 +3,7 @@
     export let bg_color = '#7b5b5b'
     export let outline_color = 'white'
     export let outline_width = 2
+    export let outline_brightness = 1.0
     export let icon = null
     export let icon_set = null
     export let text = null
@@ -43,11 +44,14 @@ text {
     {/if}
 
     {#if shape == 'circle'}
-        <circle r="14" fill={bg_color} stroke={outline_color} stroke-width={actual_outline_width}/>
+        <circle r="14" fill={bg_color}/>
+        <circle r="14" fill="transparent" stroke={outline_color} stroke-width={actual_outline_width} style="filter: brightness({outline_brightness});"/>
     {:else if shape == 'square'}
-        <rect width={width} height="28" x={-width/2} y="-14" rx="4" ry="4" fill={bg_color} stroke={outline_color} stroke-width={actual_outline_width}/>
+        <rect width={width} height="28" x={-width/2} y="-14" rx="4" ry="4" fill={bg_color}/>
+        <rect width={width} height="28" x={-width/2} y="-14" rx="4" ry="4" fill="transparent" stroke={outline_color} stroke-width={actual_outline_width} style="filter: brightness({outline_brightness});"/>
     {:else if shape == 'pin'}
-        <path fill={bg_color} stroke={outline_color} stroke-width={actual_outline_width} d={PIN_D}/>
+        <path fill={bg_color} d={PIN_D}/>
+        <path fill="transparent" stroke={outline_color} stroke-width={actual_outline_width} style="filter: brightness({outline_brightness});" d={PIN_D}/>
     {/if}
 
     {#if text}
