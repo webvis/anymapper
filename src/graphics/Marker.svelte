@@ -25,6 +25,9 @@
     font-size: 18px;
     font-weight: bold;
 }
+text {
+    pointer-events: none;
+}
 </style>
 
 <g class="mark" transform="scale({scale})">
