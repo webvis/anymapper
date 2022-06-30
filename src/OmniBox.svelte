@@ -6,6 +6,7 @@
 	import IconButton from '@smui/icon-button'
 
 	let query
+	let input
 	
 	const dispatch = createEventDispatcher()
 
@@ -20,6 +21,15 @@
 	}
 	function handleInput(){
 		search()
+	}
+	function handleKeyDown(event){
+		if($results.length > 0 && event.key === 'ArrowDown'){
+			dispatch('cursorexit')
+		}
+	}
+
+	export function focus(){
+		input.focus()
 	}
 </script>
 
@@ -71,7 +81,7 @@
 <div class="omnibox" class:fullscreen={ $results.length > 0 }>
 	<Paper elevation="4" style="padding: 0; display: flex; flex-direction: column; height: 100%;">
 		<div class="wrapper">
-			<input type="text" bind:value={query} placeholder="Search" on:input={handleInput}/>
+			<input type="text" bind:value={query} placeholder="Search" on:keydown={handleKeyDown} on:input={handleInput} bind:this={input}/>
 			<IconButton style="margin: 0;" class="material-icons" on:click={handleClick}>search</IconButton>
 		</div>
 		{#if $results.length > 0}
