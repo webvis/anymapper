@@ -7,6 +7,11 @@
 	export let viewBox
 	export let interpolateZoom = d3.interpolate
 	
+	export let scaleExtent = "0 Infinity"
+	export let translateExtent = "-Infinity -Infinity Infinity Infinity"
+	$: scaleExtentArray = scaleExtent.split(' ').map(d => +d)
+	$: translateExtentArray = translateExtent.split(' ').map(d => +d)
+	
 	let svg
 	let zoom_behavior
 	let current = false
@@ -53,7 +58,8 @@
 
 		// enable d3 zoom
 		zoom_behavior = d3.zoom()
-			.scaleExtent([0, Infinity])
+			.scaleExtent(scaleExtentArray)
+			.translateExtent([translateExtentArray.slice(0,2), translateExtentArray.slice(2,4)])
 			.interpolate(interpolateZoom)
 			.on('zoom', handleZoom)
 
