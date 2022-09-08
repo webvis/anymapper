@@ -36,7 +36,7 @@
 <style>
 	.omnibox {
 		position: relative;
-		margin: var(--anymapper--omnibox-margin);
+		margin: var(--anymapper-omnibox-margin);
 		box-sizing: border-box;
 		pointer-events: auto;
 	}
@@ -60,7 +60,7 @@
 
 	@media only screen and (max-width: 600px) {
 		.omnibox {
-			width: calc(100% - 2*var(--anymapper--omnibox-margin));
+			width: calc(100% - 2*var(--anymapper-omnibox-margin));
 			top: 0;
 		}
 		.fullscreen.omnibox {

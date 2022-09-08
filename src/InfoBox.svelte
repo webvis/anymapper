@@ -31,7 +31,7 @@
 			position: absolute;
 			width: 100%;
 			margin: 0 !important;
-			top: calc(100% - var(--anymapper--infobox-header-height));
+			top: calc(100% - var(--anymapper-infobox-header-height));
 		}
 	}
 

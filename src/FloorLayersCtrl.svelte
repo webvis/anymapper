@@ -11,8 +11,8 @@
 		bottom: 0;
         right: 0;
 		position: fixed;
-        box-shadow: var(--anymapper--float-box-shadow);
-		border-radius: var(--anymapper--float-border-radius);
+        box-shadow: var(--anymapper-float-box-shadow);
+		border-radius: var(--anymapper-float-border-radius);
 		background: white;
     	margin: 20px;
         overflow: hidden;
@@ -37,13 +37,13 @@
         font-weight: bold;
     }
 	.current {
-        background: var(--anymapper--primary-bg-color);
-        color: var(--anymapper--primary-fg-color);
+        background: var(--anymapper-primary-bg-color);
+        color: var(--anymapper-primary-fg-color);
 	}
 
 	@media only screen and (max-width: 600px) {
 		.floor_layers_ctrl.isIdSelected {
-			bottom: var(--anymapper--infobox-header-height);
+			bottom: var(--anymapper-infobox-header-height);
 		}
 	}
 </style>
