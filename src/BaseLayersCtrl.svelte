@@ -18,8 +18,8 @@
 		width: 60px;
 		height: 60px;
 		margin-right: 12px;
-		box-shadow: var(--float-box-shadow);
-		border-radius: var(--float-border-radius);
+		box-shadow: var(--anymapper--float-box-shadow);
+		border-radius: var(--anymapper--float-border-radius);
 		background: white;
 		text-align: center;
 		cursor: pointer;
@@ -37,7 +37,7 @@
 
 	@media only screen and (max-width: 600px) {
 		.base_layers_ctrl.isIdSelected {
-			bottom: var(--infobox-header-height);
+			bottom: var(--anymapper--infobox-header-height);
 		}
 	}
 </style>

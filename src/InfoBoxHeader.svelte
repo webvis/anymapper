@@ -18,11 +18,11 @@
 <div style="position: absolute; top: 2px; right: -4px;">
     <Actions>
         <ActionIcons>
-            <IconButton class="material-icons" on:click={clearSelection} style="color: var(--primary-fg-color);" title="Close">close</IconButton>
+            <IconButton class="material-icons" on:click={clearSelection} style="color: var(--anymapper--primary-fg-color);" title="Close">close</IconButton>
         </ActionIcons>
     </Actions>
 </div>
-<Content style="background: var(--primary-bg-color); color: var(--primary-fg-color);">
+<Content style="background: var(--anymapper--primary-bg-color); color: var(--anymapper--primary-fg-color);">
     <h2 class="mdc-typography--headline6">{title}</h2>
     <h3 class="mdc-typography--subtitle2">{subtitle}</h3>
 </Content>
