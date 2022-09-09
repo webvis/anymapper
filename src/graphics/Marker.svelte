@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from 'svelte'
+
     export let fg_color = null // defaults to anymapper global CSS var
     export let bg_color = null // defaults to anymapper global CSS var
     export let outline_color = 'white'

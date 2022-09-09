@@ -65,8 +65,8 @@
 
 		d3.select(svg).call(zoom_behavior)
 
-		function handleZoom() {
-			$user_transform = d3.event.transform
+		function handleZoom(event) {
+			$user_transform = event.transform
 			updateGlobals()
 			updateLODElementsInSVG()
 		}
