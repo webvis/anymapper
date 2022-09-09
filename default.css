@@ -1,9 +1,10 @@
 :root {
     --anymapper-primary-fg-color: white;
     --anymapper-primary-bg-color: #2a3ca5;
-    --anymapper-normal-fg-color: black;
-    --anymapper-light-fg-color: #888;
-    --anymapper-normal-bg-color: white;
+    --anymapper-surface-fg-color: black;
+    --anymapper-surface-fg-color-light: #888;
+    --anymapper-surface-bg-color: white;
+    --anymapper-background-color: #CCC;
     --anymapper-float-box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.25);
     --anymapper-float-border-radius: 4px;
     --anymapper-infobox-header-height: 86px;

@@ -23,7 +23,7 @@
 	onMount(() => {
 		// set default color for background if not specified
         if(background === null) {
-            background = window.getComputedStyle(self).getPropertyValue('--anymapper-normal-bg-color')
+            background = window.getComputedStyle(self).getPropertyValue('--anymapper-background-color')
         }
 
 		// store viewBox rect in a global store
