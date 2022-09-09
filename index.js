@@ -1,4 +1,5 @@
 export * from './src/stores.js'
+export { default as Anymap } from './src/Anymap.svelte'
 export { default as BaseLayersCtrl } from './src/BaseLayersCtrl.svelte'
 export { default as FloorLayersCtrl } from './src/FloorLayersCtrl.svelte'
 export { default as InfoBox } from './src/InfoBox.svelte'
