@@ -11,6 +11,8 @@
 	export let translateExtent = "-Infinity -Infinity Infinity Infinity"
 	$: scaleExtentArray = scaleExtent.split(' ').map(d => +d)
 	$: translateExtentArray = translateExtent.split(' ').map(d => +d)
+
+	export let background = null
 	
 	let svg
 	let zoom_behavior
@@ -19,6 +21,11 @@
 	let debounce_timeout
 	
 	onMount(() => {
+		// set default color for background if not specified
+        if(background === null) {
+            background = window.getComputedStyle(self).getPropertyValue('--anymapper-normal-bg-color')
+        }
+
 		// store viewBox rect in a global store
 		$viewBoxRect = svg.viewBox.baseVal
 
@@ -213,7 +220,7 @@
 	}
 </style>
 
-<svg class="view" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp}>
+<svg class="view" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp} style="background-color: {background}">
 	<g transform={$user_transform}>
 		<slot></slot>
 	</g>
