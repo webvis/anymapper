@@ -1,6 +1,6 @@
 <script>
-    export let fg_color = 'white'
-    export let bg_color = '#7b5b5b'
+    export let fg_color = null // defaults to anymapper global CSS var
+    export let bg_color = null // defaults to anymapper global CSS var
     export let outline_color = 'white'
     export let outline_width = 2
     export let outline_brightness = 1.0
@@ -19,6 +19,18 @@
     $: shadow_offset = 2 / scale
 
     const PIN_D = 'M -0.64019711,-0.2956675 C -1.2209976,-0.8293218 -5.9552623,-9.1635097 -9.1320615,-15.244729 -14.703276,-25.90949 -17.594023,-33.501024 -17.590039,-37.456633 c 0.0069,-6.462469 3.71629,-12.576105 9.4258042,-15.533539 2.7082627,-1.402842 5.0884766,-1.988303 8.11060396,-1.994976 3.09596704,-0.0072 5.46376434,0.567925 8.21767004,1.99472 5.7102168,2.958489 9.4194808,9.071246 9.4259928,15.533795 0.0034,3.94629 -2.904594,11.591053 -8.4440082,22.193833 C 5.9655518,-9.1751947 1.2246711,-0.8331741 0.64000901,-0.2956675 0.44014188,-0.1119163 0.19786774,0 0,0 -0.19782487,0 -0.44026137,-0.1119722 -0.64019711,-0.2956675 Z'
+
+    let self
+
+    onMount(() => {
+        // set defaults for colors that have not been specified
+        if(fg_color === null) {
+            fg_color = window.getComputedStyle(self).getPropertyValue('--anymapper-primary-fg-color')
+        }
+        if(bg_color === null) {
+            bg_color = window.getComputedStyle(self).getPropertyValue('--anymapper-primary-bg-color')
+        }
+    })
 </script>
 
 <style>
@@ -31,7 +43,7 @@ text {
 }
 </style>
 
-<g class="mark" transform="scale({scale})">
+<g bind:this={self} class="mark" transform="scale({scale})">
     <!-- shadow -->
     {#if shadow}
         {#if shape == 'circle'}
