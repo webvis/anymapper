@@ -32,6 +32,7 @@
 			width: 100%;
 			margin: 0 !important;
 			top: calc(100% - var(--anymapper-mobile-bottom-sheet-height));
+			z-index: 100;
 		}
 	}
 
