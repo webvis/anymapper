@@ -39,7 +39,7 @@
 
 {#if $selected_id}
 	<div class="infobox">
-		<Card class="mdc-elevation--z4" style="overflow: hidden;">
+		<Card class="mdc-elevation--z6" style="overflow: hidden;">
 			{#if $selection}
 				<slot></slot>
 			{:else}
