@@ -1,5 +1,5 @@
 <script>
-	import { layers, selectLayer, selected_id } from './stores.js'
+	import { layers, selectLayer } from './stores.js'
 
 	function handleClick(layer) {
 		selectLayer(layer.name)
@@ -7,7 +7,7 @@
 </script>
 
 <style>
-	.base_layers_ctrl {
+	.main {
 		bottom: 0;
 		position: fixed;
     	margin: 20px;
@@ -36,14 +36,14 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		.base_layers_ctrl.isIdSelected {
-			bottom: var(--anymapper-infobox-header-height);
+		.main {
+			bottom: calc(var(--anymapper-mobile-bottom-sheet-is-visible) * var(--anymapper-mobile-bottom-sheet-height));
 		}
 	}
 </style>
 
 {#if $layers}
-<div class="base_layers_ctrl" class:isIdSelected={$selected_id != ''}>
+<div class="main">
 	{#each Array.from($layers.values()).filter(d => d.type == 'base') as layer}
 		<div class="layer_btn" on:click="{() => handleClick(layer)}" class:visible="{layer.visible}"><div>{layer.name}</div></div>
 	{/each}

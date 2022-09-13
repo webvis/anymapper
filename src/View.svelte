@@ -210,17 +210,23 @@
 </script>
 
 <style>
-	.view {
+	.main {
 		width: 100%;
 		height: 100%;
 		position: fixed; /* needed to avoid jumping whenever the hash is changed */
 	}
-	.view:focus {
+	.main:focus {
 		outline: none;
+	}
+
+	@media only screen and (max-width: 600px) {
+		.main {
+			height: calc(100% - var(--anymapper-mobile-bottom-sheet-is-visible) * var(--anymapper-mobile-bottom-sheet-height));
+		}
 	}
 </style>
 
-<svg class="view" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp} style="background-color: {background}">
+<svg class="main" bind:this={svg} {viewBox} tabindex="0" on:keyup={handleKeyUp} style="background-color: {background}">
 	<g transform={$user_transform}>
 		<slot></slot>
 	</g>

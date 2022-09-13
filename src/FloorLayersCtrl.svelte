@@ -1,5 +1,5 @@
 <script>
-	import { layers, current_layer, selectLayer, selected_id } from './stores.js'
+	import { layers, current_layer, selectLayer } from './stores.js'
 
 	function handleClick(layer) {
         selectLayer(layer.name)
@@ -7,7 +7,7 @@
 </script>
 
 <style>
-	.floor_layers_ctrl {
+	.main {
 		bottom: 0;
         right: 0;
 		position: fixed;
@@ -17,7 +17,7 @@
     	margin: 20px;
         overflow: hidden;
 	}
-	.layer_btn {
+	.layer-btn {
         position: relative;
 		display: block;
 		box-sizing: border-box;
@@ -26,7 +26,7 @@
 		text-align: center;
 		cursor: pointer;
 	}
-	.layer_btn > * {
+	.layer-btn > * {
 		position: absolute;
 		width: 48px;
 		bottom: 16px;
@@ -42,16 +42,16 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		.floor_layers_ctrl.isIdSelected {
-			bottom: var(--anymapper-infobox-header-height);
+		.main {
+			bottom: calc(var(--anymapper-mobile-bottom-sheet-is-visible) * var(--anymapper-mobile-bottom-sheet-height));
 		}
 	}
 </style>
 
 {#if $layers}
-<div class="floor_layers_ctrl" class:isIdSelected={$selected_id != ''}>
+<div class="main">
 	{#each Array.from($layers.values()).filter(d => d.type == 'floor').reverse() as layer}
-		<div class="layer_btn" on:click="{() => handleClick(layer)}" class:visible="{layer.visible}" class:current="{layer == $current_layer}"><div>{layer.name}</div></div>
+		<div class="layer-btn" on:click="{() => handleClick(layer)}" class:visible="{layer.visible}" class:current="{layer == $current_layer}"><div>{layer.name}</div></div>
 	{/each}
 </div>
 {/if}
