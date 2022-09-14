@@ -39,6 +39,7 @@
 		margin: var(--anymapper-omnibox-margin);
 		box-sizing: border-box;
 		pointer-events: auto;
+		width: var(--anymapper-side-sheet-width);
 	}
 	.wrapper {
 		display: flex;

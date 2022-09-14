@@ -11,6 +11,7 @@
     	margin: 10px;
 		box-sizing: border-box;
 		pointer-events: auto;
+		width: var(--anymapper-side-sheet-width);
 	}
 
 	:global(.infobox table) {
