@@ -5,6 +5,10 @@
 	import Paper from '@smui/paper'
 	import IconButton from '@smui/icon-button'
 
+
+    export let iconSet = 'material-symbols-outlined'
+    export let searchIcon = 'search'
+
 	let query
 	let input
 	
@@ -83,7 +87,7 @@
 	<Paper elevation="4" style="padding: 0; display: flex; flex-direction: column; height: 100%;">
 		<div class="wrapper">
 			<input type="text" bind:value={query} placeholder="Search" on:keydown={handleKeyDown} on:input={handleInput} bind:this={input}/>
-			<IconButton style="margin: 0;" class="material-icons" on:click={handleClick}>search</IconButton>
+			<IconButton style="margin: 0;" class={iconSet} on:click={handleClick}>{searchIcon}</IconButton>
 		</div>
 		{#if $results.length > 0}
 			<hr/>

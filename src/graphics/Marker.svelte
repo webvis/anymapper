@@ -6,12 +6,12 @@
     export let outline_color = 'white'
     export let outline_width = 2
     export let outline_brightness = 1.0
+    export let iconSet = 'material-symbols-outlined'
     export let icon = null
-    export let icon_set = null
     export let text = null
     export let shape = 'circle'
     export let shadow = false
-    export let icon_spacing
+    export let icon_spacing = null
     export let scale = 1
 
     $: icons = icon === null ? [] : icon.split(',')
@@ -71,7 +71,7 @@ text {
     {#if text}
         <text class="label" fill={fg_color} text-anchor="middle" dy=".35em" y={shape == 'pin' ? -36 : 0}>{text}</text>
     {:else if icon}
-        <text class="material-icons{icon_set ? '-'+icon_set : ''}" fill={fg_color} transform="scale(0.8)" text-anchor="middle" dy=".5em" dx="{actual_icon_spacing/2}px" y={shape == 'pin' ? -47 : 0} style="letter-spacing: {actual_icon_spacing}px;">
+        <text class={iconSet} fill={fg_color} transform="scale(0.8)" text-anchor="middle" dy=".5em" dx="{actual_icon_spacing/2}px" y={shape == 'pin' ? -47 : 0} style="letter-spacing: {actual_icon_spacing}px;">
             {#each icons as icon}
                 <tspan>{icon}</tspan>
             {/each}
