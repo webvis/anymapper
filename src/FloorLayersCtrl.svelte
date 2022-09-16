@@ -13,7 +13,7 @@
 		position: fixed;
         box-shadow: var(--anymapper-float-box-shadow);
 		border-radius: var(--anymapper-float-border-radius);
-		background: white;
+		background: var(--anymapper-surface-bg-color);
     	margin: 20px;
         overflow: hidden;
 	}

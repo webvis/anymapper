@@ -20,7 +20,7 @@
 		margin-right: 12px;
 		box-shadow: var(--anymapper-float-box-shadow);
 		border-radius: var(--anymapper-float-border-radius);
-		background: white;
+		background: var(--anymapper-surface-bg-color);
 		text-align: center;
 		cursor: pointer;
 	}

@@ -59,6 +59,7 @@
         flex-grow: 1;
 		font-size: inherit;
    		font-family: inherit;
+		color: inherit;
     }
 	.results {
 		flex-grow: 1;
