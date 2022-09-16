@@ -67,6 +67,7 @@
 		.omnibox {
 			width: calc(100% - 2*var(--anymapper-omnibox-margin));
 			top: 0;
+			z-index: 100;
 		}
 		.fullscreen.omnibox {
 			width: 100%;
