@@ -54,9 +54,11 @@
         outline: none;
         background: none;
 		margin: 0;
-		margin-left: 8px;
+		margin-left: 12px;
         margin-right: 12px;
         flex-grow: 1;
+		font-size: inherit;
+   		font-family: inherit;
     }
 	.results {
 		flex-grow: 1;

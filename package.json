@@ -1,6 +1,6 @@
 {
   "name": "anymapper",
-  "version": "0.29.0",
+  "version": "0.31.0",
   "description": "Visualize your data as a zoomable map",
   "svelte": "index.js",
   "scripts": {
@@ -27,11 +27,8 @@
   },
   "homepage": "https://github.com/webvis/anymapper#readme",
   "devDependencies": {
-    "rollup": "^2.3.4",
-    "rollup-plugin-svelte": "^5.0.3",
-    "sass": "^1.26.12",
-    "svelte": "^3.0.0",
-    "svelte-material-ui": "^1.0.0"
+    "svelte": "^3.49.0",
+    "svelte-material-ui": "^6.1.0"
   },
   "dependencies": {
     "@observablehq/runtime": "^4.8.2",

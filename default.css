@@ -1,3 +1,15 @@
+/* use the entire viewport */
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* anymapper theme, used by various components */
 :root {
     --anymapper-primary-fg-color: white;
     --anymapper-primary-bg-color: #2a3ca5;
@@ -10,4 +22,19 @@
     --anymapper-side-sheet-width: 350px;
     --anymapper-mobile-bottom-sheet-height: 110px;
 	--anymapper-omnibox-margin: 10px;
+}
+
+/* special CSS classes (to be used mainly in SVG) */
+.selectable {
+	cursor: pointer;
+}
+
+.region {
+    fill: white;
+    fill-opacity: 0;
+    stroke: none;
+    stroke-width: 16;
+}
+.region:not(.selectable) {
+    pointer-events: none;
 }
