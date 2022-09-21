@@ -1,5 +1,5 @@
 <script>
-    import { viewport } from './stores.js'
+    import { viewport } from './stores.ts'
 </script>
 
 <style>

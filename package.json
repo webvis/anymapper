@@ -1,8 +1,8 @@
 {
   "name": "anymapper",
-  "version": "0.33.0",
+  "version": "0.34.7",
   "description": "Visualize your data as a zoomable map",
-  "svelte": "index.js",
+  "svelte": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte'
-	import { results, clearSelection } from './stores.js'
+	import { results, clearSelection } from './stores.ts'
 
 	import Paper from '@smui/paper'
 	import IconButton from '@smui/icon-button'

@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition'
 
-	import { layers, current_layer } from './stores.js'
+	import { layers, current_layer } from './stores.ts'
 	import TracingPaper from './TracingPaper.svelte'
 
 	export let name
