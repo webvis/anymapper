@@ -23,18 +23,3 @@ html, body {
     --anymapper-mobile-bottom-sheet-height: 110px;
 	--anymapper-omnibox-margin: 10px;
 }
-
-/* special CSS classes (to be used mainly in SVG) */
-.selectable {
-	cursor: pointer;
-}
-
-.region {
-    fill: white;
-    fill-opacity: 0;
-    stroke: none;
-    stroke-width: 16;
-}
-.region:not(.selectable) {
-    pointer-events: none;
-}
