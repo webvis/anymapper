@@ -65,14 +65,14 @@ export function clearSelection() {
     window.location.hash = ''
 }
 
-export function select(id) {
+export function select(id: string) {
     window.location.hash = '#'+id
 }
 
-export function hover_enter(id) {
+export function hover_enter(id: string) {
     hovered_id.set(id)
 }
-export function hover_leave(id) {
+export function hover_leave(id: string) {
     hovered_id.set(null)
 }
 
