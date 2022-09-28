@@ -16,3 +16,6 @@ export { default as TracingPaper } from './src/TracingPaper.svelte'
 export { default as Marker } from './src/graphics/Marker.svelte'
 export { default as Line } from './src/graphics/Line.svelte'
 export * from './src/utils'
+
+import type { Entity, Point, Path } from './src/types'
+export type { Entity, Point, Path }
