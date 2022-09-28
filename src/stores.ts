@@ -1,16 +1,12 @@
 import { writable, readable, get } from 'svelte/store'
-import type { Writable } from 'svelte/store'
 
 import * as d3 from 'd3'
 
 import { get_entity_position_in_layer, get_entity_first_valid_layer } from './utils'
 
-import type { Entity } from './types'
-
 export const layers = writable(null)
 export const current_layer = writable(null)
 export const selection = writable(null)
-export const results : Writable<Array<Entity>> = writable([])
 
 export const viewBoxRect = writable({width: 1000, height: 1000, x: 0, y: 0})
 
@@ -47,11 +43,6 @@ selection.subscribe(d => {
         let new_layer = get_entity_first_valid_layer(d)
         if(new_layer !== null)
             selectLayer(new_layer)
-    }
-
-    if(d) {
-        // clear search results
-        results.set([])
     }
 })
 
