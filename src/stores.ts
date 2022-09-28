@@ -1,11 +1,12 @@
-import { writable, readable, get, derived } from 'svelte/store'
+import { writable, readable, get } from 'svelte/store'
 
 import * as d3 from 'd3'
+
+import { get_entity_position_in_layer, get_entity_first_valid_layer } from './utils'
 
 export const layers = writable(null)
 export const current_layer = writable(null)
 export const selection = writable(null)
-export const results = writable([])
 
 export const viewBoxRect = writable({width: 1000, height: 1000, x: 0, y: 0})
 
@@ -37,18 +38,17 @@ selected_id.subscribe(id => {
 
 selection.subscribe(d => {
     // change layer if the new selection is not in the current one
-    if(d && d.position && d.position.layers && !(d.position.layers.has(get(current_layer).name)))
-        selectLayer(d.position.layers.values().next().value)
-
-    if(d) {
-        // clear search results
-        results.set([])
+    if(d && get_entity_position_in_layer(d, get(current_layer)) === null) {
+        // selection is not in the current layer
+        let new_layer = get_entity_first_valid_layer(d)
+        if(new_layer !== null)
+            selectLayer(new_layer)
     }
 })
 
 // check if we need to null the selection whenever the current layer is changed
 current_layer.subscribe(layer => {
-    if(get(selection) && get(selection).position && get(selection).position.layers && !(get(selection).position.layers.has(layer.name)))
+    if(get(selection) && get(selection).position && get_entity_position_in_layer(get(selection), layer) === null)
         clearSelection()
 })
 
@@ -56,14 +56,14 @@ export function clearSelection() {
     window.location.hash = ''
 }
 
-export function select(id) {
+export function select(id: string) {
     window.location.hash = '#'+id
 }
 
-export function hover_enter(id) {
+export function hover_enter(id: string) {
     hovered_id.set(id)
 }
-export function hover_leave(id) {
+export function hover_leave(id: string) {
     hovered_id.set(null)
 }
 
@@ -89,13 +89,4 @@ export function selectLayer(name) {
     layer.visible = true
     
     layers.set(get(layers)) // refresh layers after modification
-}
-
-export function is_position_in_layer(position, layer) {
-    return position.layers.has(layer.name)
-}
-
-export function is_position_in_lod(position, z) {
-    let lod_range = 'lodrange' in position ? position.lodrange.map(d => d == 'Infinity' ? Infinity : d) : [0, Infinity]
-    return z >= lod_range[0] && z <= lod_range[1]
 }

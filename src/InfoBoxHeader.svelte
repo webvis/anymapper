@@ -1,5 +1,5 @@
 <script>
-    import { clearSelection } from './stores.js'
+    import { clearSelection } from './stores.ts'
 
     import { Content, Actions, ActionIcons } from '@smui/card'
     import IconButton from '@smui/icon-button'

@@ -1,4 +1,4 @@
-export * from './src/stores.js'
+export * from './src/stores'
 export { default as Anymap } from './src/Anymap.svelte'
 export { default as BaseLayersCtrl } from './src/BaseLayersCtrl.svelte'
 export { default as FloorLayersCtrl } from './src/FloorLayersCtrl.svelte'
@@ -15,4 +15,7 @@ export { default as Depiction } from './src/Depiction.svelte'
 export { default as TracingPaper } from './src/TracingPaper.svelte'
 export { default as Marker } from './src/graphics/Marker.svelte'
 export { default as Line } from './src/graphics/Line.svelte'
-export * from './src/utils.js'
+export * from './src/utils'
+
+import type { Entity, Point, Path } from './src/types'
+export type { Entity, Point, Path }

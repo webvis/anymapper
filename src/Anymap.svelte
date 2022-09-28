@@ -1,5 +1,5 @@
 <script>
-	import { selection } from './stores.js'
+	import { selection } from './stores.ts'
 </script>
 
 <style>

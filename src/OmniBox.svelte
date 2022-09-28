@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import { createEventDispatcher } from 'svelte'
-	import { results, clearSelection } from './stores.js'
+	import { clearSelection } from './stores'
 
 	import Paper from '@smui/paper'
 	import IconButton from '@smui/icon-button'
 
-
+	
+	export let results: Array<any>
     export let iconSet = 'material-symbols-outlined'
     export let searchIcon = 'search'
 
@@ -27,7 +28,7 @@
 		search()
 	}
 	function handleKeyDown(event){
-		if($results.length > 0 && event.key === 'ArrowDown'){
+		if(results.length > 0 && event.key === 'ArrowDown'){
 			dispatch('cursorexit')
 		}
 	}
@@ -87,13 +88,13 @@
 
 </style>
 
-<div class="omnibox" class:fullscreen={ $results.length > 0 }>
+<div class="omnibox" class:fullscreen={ results.length > 0 }>
 	<Paper elevation="4" style="padding: 0; display: flex; flex-direction: column; height: 100%;">
 		<div class="wrapper">
 			<input type="text" bind:value={query} placeholder="Search" on:keydown={handleKeyDown} on:input={handleInput} bind:this={input}/>
 			<IconButton style="margin: 0;" class={iconSet} on:click={handleClick}>{searchIcon}</IconButton>
 		</div>
-		{#if $results.length > 0}
+		{#if results.length > 0}
 			<hr/>
 			<div class="results">
 				<slot>

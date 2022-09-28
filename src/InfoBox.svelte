@@ -1,5 +1,5 @@
 <script>
-	import { selected_id, selection } from './stores.js'
+	import { selected_id, selection } from './stores.ts'
 
 	import Card from '@smui/card'
 	import LinearProgress from '@smui/linear-progress'

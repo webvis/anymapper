@@ -1,7 +1,7 @@
 <script>
 	import * as d3 from 'd3'
 
-	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, settled_zoom, settled_viewport, layers, current_layer, selection, hovered_id } from './stores.js'
+	import { user_transform, viewBoxRect, screen_size, screen_transform, zoom, viewport, settled_zoom, settled_viewport, layers, current_layer, selection, hovered_id } from './stores.ts'
 	import { onMount } from 'svelte'
 
 	export let viewBox
