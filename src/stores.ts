@@ -2,8 +2,6 @@ import { writable, readable, get } from 'svelte/store'
 
 import * as d3 from 'd3'
 
-import { get_entity_position_in_layer, get_entity_first_valid_layer } from './utils'
-
 export const layers = writable(null)
 export const current_layer = writable(null)
 export const selection = writable(null)
@@ -38,9 +36,9 @@ selected_id.subscribe(id => {
 
 selection.subscribe(d => {
     // change layer if the new selection is not in the current one
-    if(d && get_entity_position_in_layer(d, get(current_layer)) === null) {
+    if(d && d.get_position_in_layer(get(current_layer)) === null) {
         // selection is not in the current layer
-        let new_layer = get_entity_first_valid_layer(d)
+        let new_layer = d.get_first_valid_layer()
         if(new_layer !== null)
             selectLayer(new_layer)
     }
@@ -48,7 +46,7 @@ selection.subscribe(d => {
 
 // check if we need to null the selection whenever the current layer is changed
 current_layer.subscribe(layer => {
-    if(get(selection) && get(selection).position && get_entity_position_in_layer(get(selection), layer) === null)
+    if(get(selection) && get(selection).position && get(selection).get_position_in_layer(layer) === null)
         clearSelection()
 })
 
