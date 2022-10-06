@@ -6,12 +6,14 @@ export class Entity {
     constructor(init?: Partial<Entity>) {
         Object.assign(this, init)
 
-        // automatically instance contained Points, if needed
-        if(Array.isArray(this.position)) {
-            this.position = this.position.map(p => p instanceof Point ? p : new Point(p))
+        if(this.position !== undefined) { // position can be omitted. if so, skip this
+            // automatically instance contained Points, if needed
+            if(Array.isArray(this.position)) {
+                this.position = this.position.map(p => p instanceof Point ? p : new Point(p))
+            }
+            else // not an Array
+                this.position = this.position instanceof Point ? this.position : new Point(this.position)
         }
-        else // not an Array
-            this.position = this.position instanceof Point ? this.position : new Point(this.position)
     }
 
     get_first_valid_layer(this): string | null {
