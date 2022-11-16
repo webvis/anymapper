@@ -31,7 +31,7 @@ export class Entity {
     }
 
     get_position_in_layer(this, layer) : Point | null {
-        if(this.position === undefined)
+        if(this.position === undefined || layer === null)
             return null
     
         if(Array.isArray(this.position)) {
