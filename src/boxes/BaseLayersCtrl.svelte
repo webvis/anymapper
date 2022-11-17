@@ -1,5 +1,5 @@
 <script>
-	import { layers, selectLayer } from './stores.ts'
+	import { layers, selectLayer } from '../stores.ts'
 
 	function handleClick(layer) {
 		selectLayer(layer.name)
