@@ -27,7 +27,7 @@ export class Entity {
             return null
         }
         else // not an Array
-            return this.position.layer
+            return this.position.layer || null // if layer is undefined, return null
     }
 
     get_position_in_layer(this, layer) : Point | null {
