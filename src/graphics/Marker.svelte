@@ -14,7 +14,7 @@
     export let icon_spacing = null
     export let scale = 1
 
-    $: icons = icon === null ? [] : icon.split(',')
+    $: icons = icon === null || icon === undefined ? [] : icon.split(',')
     $: actual_outline_width = outline_width / scale
     $: actual_icon_spacing = icon_spacing ? icon_spacing : 0
     $: width = 8 - actual_icon_spacing + Math.max(1, icons.length) * (20+actual_icon_spacing)
@@ -26,10 +26,10 @@
 
     onMount(() => {
         // set defaults for colors that have not been specified
-        if(fg_color === null) {
+        if(fg_color === null || fg_color === undefined) {
             fg_color = window.getComputedStyle(self).getPropertyValue('--anymapper-primary-fg-color')
         }
-        if(bg_color === null) {
+        if(bg_color === null || bg_color === undefined) {
             bg_color = window.getComputedStyle(self).getPropertyValue('--anymapper-primary-bg-color')
         }
     })
