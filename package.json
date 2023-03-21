@@ -33,6 +33,7 @@
   "dependencies": {
     "@observablehq/runtime": "^4.8.2",
     "d3": "^7.6.1",
-    "d3-array": "^2.4.0"
+    "d3-array": "^2.4.0",
+    "path-data-polyfill": "^1.0.4"
   }
 }
